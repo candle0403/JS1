@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>べっちさんの課題1</title>
+	</head>
+	<body>
+		<script>
+			"use strict";
+
+			function fizzBuzz() {
+				for (let i = 1; i < 100; i++) {
+					if (i % 3 === 0 && i % 5 === 0) {
+						console.log("FizzBuzz" + i);
+					} else if (i % 3 === 0) {
+						console.log("Fizz" + i);
+					} else if (i % 5 === 0) {
+						console.log("Buzz" + i);
+					}
+				}
+			}
+
+			fizzBuzz();
+		</script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

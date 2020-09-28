@@ -1,0 +1,27 @@
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+
+		<title>課題３</title>
+	</head>
+	<body>
+		<script>
+			"use strict";
+			const tasks = ["掃除", "買い物", "散歩"];
+			function showAd() {
+				console.log("====================================");
+				console.log("現在持っているタスク一覧");
+				console.log("====================================");
+
+				tasks.forEach((task, index) => {
+					console.log(`${index} : ${task}`);
+				});
+			}
+			showAd();
+			prompt("「確認、追加、削除、追加」の４つのいずれかを押してください");
+			const result = prompt("タスクを入力して下さい");
+			tasks.push(result);
+			showAd();
+		</script>
+	</body>
+</html>

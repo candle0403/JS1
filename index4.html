@@ -1,26 +1,44 @@
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
-
-		<title>課題３</title>
+		<title>べっちさんの課題4</title>
 	</head>
 	<body>
 		<script>
 			"use strict";
-			const tasks = ["掃除", "買い物", "散歩"];
-			function showAd() {
-				console.log("====================================");
-				console.log("現在持っているタスク一覧");
-				console.log("====================================");
+			const tasks = [
+				{
+					content: "机を片つける",
+					genre: "掃除",
+				},
+				{
+					content: "牛乳を買う",
+					genre: "買い物",
+				},
+				{
+					content: "散歩する",
+					genre: "運動",
+				},
+			];
+
+			function notice() {
+				console.log("==========================");
+				console.log("現在持っているタスクの一覧");
+				console.log("==========================");
 
 				tasks.forEach((task, index) => {
-					console.log(`${index} : ${task}`);
+					console.log(
+						`${index} : [内容]${task.content}、［ジャンル]${task.genre}`
+					);
 				});
 			}
-			showAd();
-			prompt("「確認、追加、削除、追加」の４つのいずれかを押してください");
-			const result = prompt("タスクを入力して下さい");
-			tasks.push(result);
+
+			notice();
+
+			const contentAd = prompt("タスクを入力してください");
+			const genreAd = prompt("ジャンルを入力してください");
+			alert("新しいタスクを追加しました");
+			tasks.push({ content: contentAd, genre: genreAd });
 			showAd();
 		</script>
 	</body>

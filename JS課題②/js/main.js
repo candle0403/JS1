@@ -1,5 +1,12 @@
 "use strict";
 {
+	function clearResult() {
+		const ul = document.querySelector("ul");
+		while (ul.firstElementChild) {
+			ul.removeChild(ul.firstElementChild);
+		}
+	}
+
 	function outPutFizzBuzz() {
 		const fizz = document.getElementById("fizz").value;
 		const buzz = document.getElementById("buzz").value;
@@ -35,6 +42,7 @@
 
 	const btn = document.getElementById("btn");
 	btn.addEventListener("click", () => {
+		clearResult();
 		outPutFizzBuzz();
 	});
 }

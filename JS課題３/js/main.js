@@ -27,5 +27,6 @@
 		td4.textContent = `${tasks[i].status2}`;
 		tr.appendChild(td4);
 		document.querySelector("tbody").appendChild(tr);
+		oneTask.value = "";
 	});
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<title>JS3</title>
+		<link rel="stylesheet" href="css/stylesheet.css" />
+	</head>
+
+	<body>
+		<h1>ToDoリスト</h1>
+		<form>
+			<input type="radio" name="choices" value="すべて" />すべて
+			<input type="radio" name="choices" value="作業中" />作業中
+			<input type="radio" name="choices" value="完了" />完了
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>コメント</th>
+					<th>状態</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<h1>新規タスクの追加</h1>
+		<input type="text" id="task" />
+		<input type="submit" value="追加" id="add" />
+
+		<script src="js/main.js"></script>
+	</body>
+</html>

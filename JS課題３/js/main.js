@@ -2,8 +2,21 @@
 {
 	const oneTask = document.getElementById('task');
 	const tbody = document.querySelector('tbody');
+	const deleteTd = document.createElement('td');
 
 	const tasks = [];
+
+	function clearTr(index) {
+		deleteTd.addEventListener('click', () => {
+			if (tasks.length === 1) {
+				index = 0;
+			}
+			const tres = document.querySelectorAll('tbody > tr')[index];
+			tres.remove();
+			tasks.splice(index, 1);
+			console.log(index);
+		});
+	}
 
 	function writeTask() {
 		while (tbody.firstElementChild) {
@@ -29,16 +42,7 @@
 			tr.appendChild(deleteTd);
 			tbody.appendChild(tr);
 
-			deleteTd.addEventListener('click', () => {
-				if (tasks.length === 1) {
-					index = 0;
-				}
-				const tres = document.querySelectorAll('tbody > tr')[index];
-				tres.remove();
-				tasks.splice(index, 1);
-				console.log(index);
-			});
-
+			clearTr(index);
 			oneTask.value = '';
 		});
 	}

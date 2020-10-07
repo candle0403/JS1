@@ -43,6 +43,7 @@
 			tbody.appendChild(tr);
 
 			clearTr(index);
+
 			oneTask.value = '';
 		});
 	}

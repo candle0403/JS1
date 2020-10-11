@@ -2,11 +2,12 @@
 {
 	const oneTask = document.getElementById('task');
 	const tbody = document.querySelector('tbody');
-	const deleteTd = document.createElement('td');
 
+	let done = false;
 	const tasks = [];
 
-	function clearTr(index) {
+	function clearTr(index, deleteTd) {
+		console.log(index);
 		deleteTd.addEventListener('click', () => {
 			if (tasks.length === 1) {
 				index = 0;
@@ -14,8 +15,20 @@
 			const tres = document.querySelectorAll('tbody > tr')[index];
 			tres.remove();
 			tasks.splice(index, 1);
-			console.log(index);
 		});
+	}
+
+	function addStatus(task, statusTd, tr) {
+		statusTd.classList.add('working');
+		statusTd.textContent = task.status;
+		tr.appendChild(statusTd);
+	}
+
+	function addDelete(task, deleteTd, tr) {
+		deleteTd.classList.add('d_button');
+		deleteTd.textContent = task.delete_btn;
+		tr.appendChild(deleteTd);
+		tbody.appendChild(tr);
 	}
 
 	function writeTask() {
@@ -32,17 +45,12 @@
 			tr.appendChild(commentTd);
 
 			const statusTd = document.createElement('td');
-			statusTd.classList.add('working');
-			statusTd.textContent = task.status;
-			tr.appendChild(statusTd);
+			addStatus(task, statusTd, tr);
 
 			const deleteTd = document.createElement('td');
-			deleteTd.classList.add('d_button');
-			deleteTd.textContent = task.delete_btn;
-			tr.appendChild(deleteTd);
-			tbody.appendChild(tr);
+			addDelete(task, deleteTd, tr);
 
-			clearTr(index);
+			clearTr(index, deleteTd);
 
 			oneTask.value = '';
 		});

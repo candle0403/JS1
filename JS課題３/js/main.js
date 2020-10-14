@@ -31,6 +31,17 @@
 		tbody.appendChild(tr);
 	}
 
+	function changeStatus(statusTd) {
+		statusTd.addEventListener('click', () => {
+			if (done === true) {
+				statusTd.textContent = '作業中';
+			} else {
+				statusTd.textContent = '完了';
+			}
+			done = !done;
+		});
+	}
+
 	function writeTask() {
 		while (tbody.firstElementChild) {
 			tbody.removeChild(tbody.firstElementChild);
@@ -46,6 +57,8 @@
 
 			const statusTd = document.createElement('td');
 			addStatus(task, statusTd, tr);
+
+			changeStatus(statusTd);
 
 			const deleteTd = document.createElement('td');
 			addDelete(task, deleteTd, tr);

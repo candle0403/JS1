@@ -2,12 +2,32 @@
 {
 	const oneTask = document.getElementById('task');
 	const tbody = document.querySelector('tbody');
-
+	const allSelect = document.getElementById('allSelect');
+	const nowSelect = document.getElementById('nowSelect');
+	const compsSelect = document.getElementById('compsSelect');
 	let done = false;
-	const tasks = [];
+	let tasks = [];
+
+	function filterTasks() {
+		if (allSelect.checked) {
+			const allTasks = tasks;
+			return writeTask(allTasks);
+		} else if (nowSelect.checked) {
+			const workingTodo = tasks.filter((work) => {
+				return work.status === '作業中';
+			});
+			console.log(workingTodo);
+			return writeTask(workingTodo);
+		} else if (compsSelect.checked) {
+			const compsTodo = tasks.filter((comp) => {
+				return comp.status === '完了';
+			});
+			return writeTask(compsTodo);
+		}
+		console.log(compsTodo);
+	}
 
 	function clearTr(index, deleteTd) {
-		console.log(index);
 		deleteTd.addEventListener('click', () => {
 			if (tasks.length === 1) {
 				index = 0;
@@ -31,22 +51,24 @@
 		tbody.appendChild(tr);
 	}
 
-	function changeStatus(statusTd) {
+	function changeStatus(statusTd, array,index) {
 		statusTd.addEventListener('click', () => {
 			if (done === true) {
 				statusTd.textContent = '作業中';
+				array[index].status = '作業中'
 			} else {
 				statusTd.textContent = '完了';
+				array[index].status = '完了'
 			}
 			done = !done;
 		});
 	}
 
-	function writeTask() {
+	function writeTask(array) {
 		while (tbody.firstElementChild) {
 			tbody.removeChild(tbody.firstElementChild);
 		}
-		tasks.forEach((task, index) => {
+		array.forEach((task, index) => {
 			const tr = document.createElement('tr');
 			const idNumber = document.createElement('td');
 			idNumber.textContent = index;
@@ -58,7 +80,7 @@
 			const statusTd = document.createElement('td');
 			addStatus(task, statusTd, tr);
 
-			changeStatus(statusTd);
+			changeStatus(statusTd, array,index);
 
 			const deleteTd = document.createElement('td');
 			addDelete(task, deleteTd, tr);
@@ -76,8 +98,16 @@
 				status: '作業中',
 				delete_btn: '削除',
 			});
-			writeTask();
+			filterTasks();
 		});
 	}
 	addTask();
+
+	const choices = document.getElementsByName('choices');
+	choices.forEach(choice =>{
+		choice.addEventListener('click',()=>{
+		filterTasks();
+		})
+	});
+	console.log(tasks);
 }

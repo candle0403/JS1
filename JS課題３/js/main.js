@@ -51,7 +51,7 @@
 		tbody.appendChild(tr);
 	}
 
-	function changeStatus(statusTd, array,index) {
+	function changeStatus(statusTd, array, index) {
 		statusTd.addEventListener('click', () => {
 			if (done === true) {
 				statusTd.textContent = '作業中';
@@ -64,11 +64,11 @@
 		});
 	}
 
-	function writeTask(array) {
+	function writeTask(tasksArray) {
 		while (tbody.firstElementChild) {
 			tbody.removeChild(tbody.firstElementChild);
 		}
-		array.forEach((task, index) => {
+		tasksArray.forEach((task, index) => {
 			const tr = document.createElement('tr');
 			const idNumber = document.createElement('td');
 			idNumber.textContent = index;
@@ -80,7 +80,7 @@
 			const statusTd = document.createElement('td');
 			addStatus(task, statusTd, tr);
 
-			changeStatus(statusTd, array,index);
+			changeStatus(statusTd, tasksArray, index);
 
 			const deleteTd = document.createElement('td');
 			addDelete(task, deleteTd, tr);
@@ -104,7 +104,7 @@
 	addTask();
 
 	const choices = document.getElementsByName('choices');
-	choices.forEach(choice =>{
+	choices.forEach(choice => {
 		choice.addEventListener('click',()=>{
 		filterTasks();
 		})

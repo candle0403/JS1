@@ -9,9 +9,15 @@
 	<body>
 		<h1>ToDoリスト</h1>
 		<form id="target">
-			<input type="radio" name="choices" value="all" />すべて
-			<input type="radio" name="choices" value="now" />作業中
-			<input type="radio" name="choices" value="comp" />完了
+			<input
+				type="radio"
+				name="choices"
+				value="all"
+				id="allSelect"
+				checked
+			/>すべて
+			<input type="radio" name="choices" value="now" id="nowSelect" />作業中
+			<input type="radio" name="choices" value="comp" id="compsSelect"  />完了
 		</form>
 		<table>
 			<thead>
